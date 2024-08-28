@@ -184,7 +184,7 @@ input[type="date"]:focus {
 /* Modo oscuro */
 body.dark-mode {
   background-color: #582e61; 
-  color: #FFFFFF;
+  color: #070707;
 }
 
 body.dark-mode .header, 
@@ -198,7 +198,7 @@ body.dark-mode .task[data-priority="baja"] {
 
 body.dark-mode .modal-content {
   background-color: #823970;
-  color: #DDDDDD;
+  color: #0f0f0f;
 }
 
 body.dark-mode .agregar-btn {
