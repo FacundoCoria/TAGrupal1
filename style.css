@@ -38,6 +38,8 @@ body { /*fondo*/
   min-height: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .column h2 {
@@ -112,7 +114,7 @@ body { /*fondo*/
   font-weight: bold;
 }
 
-.edit{
+.edit-button{
   background-color: #6a5acd; 
   color: rgb(255, 255, 255);
   padding: 12px 24px;
@@ -261,4 +263,60 @@ body.dark-mode .agregar-btn:hover {
   input[type="date"] {
     font-size: 14px; /* Ajusta el tamaño del texto en d.móviles */
   }
+
+  @media (max-width: 425px) {
+    .row {
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Columnas apiladas en móviles */
+    }
+
+    .agregar-btn {
+      font-size: 16px; /* Ajusta el tamaño del texto */
+      padding: 10px 20px; 
+    }
+
+    .modal-content {
+      width: 90%;
+      padding: 15px;
+    }
+
+    .column {
+      min-height: auto; /* Elimina la altura mínima en móviles */
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="date"] {
+      font-size: 14px; /* Ajusta el tamaño del texto en d.móviles */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        gap: 10px; /* Espacio entre elementos */
+    }
+
+    .modal-content {
+        width: 95%; /* Maximiza el ancho para pantallas pequeñas */
+        padding: 10px; /* Reduce el padding */
+    }
+
+    .column {
+        min-height: auto;
+        width: 100%; /* Asegura que las columnas ocupen todo el ancho disponible */
+        margin-bottom: 10px; /* Espacio entre columnas */
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="date"] {
+        font-size: 12px; /* Reduce aún más el tamaño del texto en pantallas más pequeñas */
+    }
+
+    body {
+        overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    }
+}
 }

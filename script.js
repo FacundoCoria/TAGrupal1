@@ -88,9 +88,17 @@ function addTask() { /*agregar tarea*/
 
     // Ordenar tareas por fecha de vencimiento
     ordenarPorFecha(status);
-    limpiar(modal);
+    
     closeAgregarModal();
+    
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('assigned').value = '';
+    document.getElementById('priority').value = '';
+    document.getElementById('status').value = '';
+    document.getElementById('deadline').value = '';
 }
+
 
 function deleteTask(taskId) {
     const taskElement = document.getElementById(`task-${taskId}`);
@@ -169,10 +177,6 @@ function ordenarPorFecha(status) {
     });
 
     tasks.forEach(task => column.appendChild(task));
-}
-
-function limpiar(modal){
-    modal.reset;
 }
 
 function toggleDarkMode() {
