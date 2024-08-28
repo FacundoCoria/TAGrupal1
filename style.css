@@ -1,0 +1,264 @@
+body { /*fondo*/
+  background-color: #E6E6FA; 
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.agregar-btn { /* boton */
+  background-color: #6a5acd; 
+  color: rgb(255, 255, 255);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.agregar-btn:hover {
+  background-color: #483d8b; 
+}
+
+.row { /*tamaño y espaciado de columnas*/
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 20px; 
+  margin: 20px;
+}
+
+.column { /*parte estetica de columnas*/
+  background-color: #dc8abb;
+  border-radius: 8px;
+  min-height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.column h2 {
+  text-align: center;
+}
+
+.task-container { /*post it de tarea*/
+  min-height: 300px;
+}
+
+
+.task{ /*configuracion general post-it de tarea*/
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  cursor: move;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task[data-priority="baja"] { /*color prioridad baja*/
+  background-color: #90EE90; 
+}
+
+.task[data-priority="media"] { /*color prioridad media*/
+  background-color: #FFFFE0; 
+}
+
+.task[data-priority="alta"] { /*color prioridad alta*/
+  background-color: #f67862; 
+}
+
+.task .close {
+  color: white;
+  cursor: pointer;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(227, 117, 187, 0.347);
+  /*padding-top: 10px;*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  background-color: #e98ceb;
+  color: #9723b4; 
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ef65ed;
+  width: 80%;
+  max-width: 600px; /* Limita el ancho máximo de la ventana */
+  border-radius: 8px; /*redondear esquinas*/
+}
+
+.close {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.edit{
+  background-color: #6a5acd; 
+  color: rgb(255, 255, 255);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(170, 83, 141);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal .agregar-modal-btn {
+  background-color: #6a5acd;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal .editar-modal-btn {
+  background-color: #5a7ecd;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.modal .agregar-modal-btn:hover {
+  background-color: #483d8b;
+}
+
+input[type="text"],
+textarea,
+select,
+input[type="date"] {
+    background-color: #f0e6fa; /* Cambia el color de fondo de los cuadros de input */
+    border: 1px solid #6a5acd; /* Cambia el color del borde */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    box-sizing: border-box; /* Para que el padding no altere el tamaño total del input */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #483d8b; /* Color del texto */
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus,
+input[type="date"]:focus {
+    border-color: #483d8b; /* Cambia el color del borde al enfocar */
+    outline: none; /* Elimina el borde exterior al enfocar */
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #582e61; 
+  color: #FFFFFF;
+}
+
+body.dark-mode .header, 
+body.dark-mode .column {
+  background-color: #863b87;
+}
+
+body.dark-mode .task[data-priority="baja"] {
+  background-color: #90EE90;
+}
+
+body.dark-mode .modal-content {
+  background-color: #823970;
+  color: #DDDDDD;
+}
+
+body.dark-mode .agregar-btn {
+  background-color: #852a73;
+  color: #FFFFFF;
+}
+
+body.dark-mode .agregar-btn:hover {
+  background-color: #702f64;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Distribuye los botones a los extremos */
+  padding: 10px;
+}
+
+.toggle-dark-mode-btn, 
+.agregar-btn { /* Aplica el mismo estilo a ambos botones */
+  background-color: #6a5acd; 
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-dark-mode-btn:hover,
+.agregar-btn:hover {
+  background-color: #483d8b; 
+}
+
+.toggle-dark-mode-btn {
+  align-self: flex-start; /* Alinea el botón de modo oscuro a la izquierda */
+}
+
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Columnas apiladas en móviles */
+  }
+
+  .agregar-btn {
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    padding: 10px 20px; 
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .column {
+    min-height: auto; /* Elimina la altura mínima en móviles */
+  }
+
+  input[type="text"],
+  textarea,
+  select,
+  input[type="date"] {
+    font-size: 14px; /* Ajusta el tamaño del texto en d.móviles */
+  }
+}
