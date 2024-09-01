@@ -1,117 +1,40 @@
-body { /*fondo*/
+/* Estilos básicos (Mobile First) */
+
+/* Estilo general del body */
+body {
   background-color: #E6E6FA; 
   font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal en móviles */
 }
 
+/* Header */
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 10px;
 }
 
-.agregar-btn { /* boton */
+/* Botones */
+.toggle-dark-mode-btn, 
+.agregar-btn { 
   background-color: #6a5acd; 
-  color: rgb(255, 255, 255);
+  color: white;
   padding: 12px 24px;
   border: none;
   border-radius: 4px;
-  font-size: 18px; 
+  font-size: 16px; 
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-
+.toggle-dark-mode-btn:hover,
 .agregar-btn:hover {
   background-color: #483d8b; 
 }
 
-.row { /*tamaño y espaciado de columnas*/
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 20px; 
-  margin: 20px;
-}
-
-.column { /*parte estetica de columnas*/
-  background-color: #dc8abb;
-  border-radius: 8px;
-  min-height: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  max-height: 600px;
-  overflow-y: auto;
-}
-
-.column h2 {
-  text-align: center;
-}
-
-.task-container { /*post it de tarea*/
-  min-height: 300px;
-}
-
-
-.task{ /*configuracion general post-it de tarea*/
-  margin: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  background-color: white;
-  cursor: move;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.task[data-priority="baja"] { /*color prioridad baja*/
-  background-color: #90EE90; 
-}
-
-.task[data-priority="media"] { /*color prioridad media*/
-  background-color: #FFFFE0; 
-}
-
-.task[data-priority="alta"] { /*color prioridad alta*/
-  background-color: #f67862; 
-}
-
-.task .close {
-  color: white;
-  cursor: pointer;
-  float: right;
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.modal {
-  display: none;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(227, 117, 187, 0.347);
-  /*padding-top: 10px;*/
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content {
-  background-color: #e98ceb;
-  color: #9723b4; 
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #ef65ed;
-  width: 80%;
-  max-width: 600px; /* Limita el ancho máximo de la ventana */
-  border-radius: 8px; /*redondear esquinas*/
-}
-
-.close {
-  color: #ffffff;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.toggle-dark-mode-btn {
+  align-self: flex-start;
 }
 
 .edit-button{
@@ -125,11 +48,94 @@ body { /*fondo*/
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.close:hover,
-.close:focus {
-  color: rgb(170, 83, 141);
-  text-decoration: none;
+/* Estilo de columnas */
+.row {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móviles */
+  gap: 10px;
+  margin: 10px;
+}
+
+.column {
+  background-color: #dc8abb;
+  border-radius: 8px;
+  min-height: 400px;
+  max-height: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  overflow-y: auto; /* Scroll vertical dentro de cada columna */
+}
+
+.column h2 {
+  text-align: center;
+}
+
+.column-container {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  overflow-y: hidden; /* Evita el desplazamiento vertical */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+
+/* Tarjetas de tarea */
+.task-container {
+  min-height: 300px;
+}
+
+.task { 
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  cursor: move;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task[data-priority="baja"] {
+  background-color: #90EE90;
+}
+
+.task[data-priority="media"] {
+  background-color: #FFFFE0;
+}
+
+.task[data-priority="alta"] {
+  background-color: #f67862;
+}
+
+.task .close {
+  color: white;
   cursor: pointer;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Estilo del modal */
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(227, 117, 187, 0.347);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  background-color: #e98ceb;
+  color: #9723b4; 
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ef65ed;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
 }
 
 .modal .agregar-modal-btn {
@@ -154,31 +160,41 @@ body { /*fondo*/
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-.modal .agregar-modal-btn:hover {
-  background-color: #483d8b;
+.close {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
+.close:hover,
+.close:focus {
+  color: rgb(170, 83, 141);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Inputs y selectores */
 input[type="text"],
 textarea,
 select,
 input[type="date"] {
-    background-color: #f0e6fa; /* Cambia el color de fondo de los cuadros de input */
-    border: 1px solid #6a5acd; /* Cambia el color del borde */
-    border-radius: 8px; /* Esquinas redondeadas */
-    padding: 10px; /* Espaciado interno */
-    width: 100%; /* Ajustar el ancho al 100% del contenedor */
-    box-sizing: border-box; /* Para que el padding no altere el tamaño total del input */
-    font-size: 16px; /* Tamaño de fuente */
-    color: #483d8b; /* Color del texto */
+  background-color: #f0e6fa;
+  border: 1px solid #6a5acd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #483d8b;
 }
 
 input[type="text"]:focus,
 textarea:focus,
 select:focus,
 input[type="date"]:focus {
-    border-color: #483d8b; /* Cambia el color del borde al enfocar */
-    outline: none; /* Elimina el borde exterior al enfocar */
+  border-color: #483d8b;
+  outline: none;
 }
 
 /* Modo oscuro */
@@ -237,86 +253,52 @@ body.dark-mode .agregar-btn:hover {
   align-self: flex-start; /* Alinea el botón de modo oscuro a la izquierda */
 }
 
-/* Media Queries para dispositivos pequeños */
-@media (max-width: 768px) {
-  .row {
-    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Columnas apiladas en móviles */
-  }
-
+/* Media Queries */
+@media (min-width: 426px) {
   .agregar-btn {
-    font-size: 16px; /* Ajusta el tamaño del texto */
-    padding: 10px 20px; 
+    position: static; /* Vuelve a ser estático a partir de 426px */
+  }
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta a columnas flexibles */
+    gap: 20px;
   }
 
   .modal-content {
-    width: 90%;
+    width: 80%;
     padding: 15px;
   }
 
   .column {
-    min-height: auto; /* Elimina la altura mínima en móviles */
+    min-height: auto;
   }
 
   input[type="text"],
   textarea,
   select,
   input[type="date"] {
-    font-size: 14px; /* Ajusta el tamaño del texto en d.móviles */
+    font-size: 16px;
   }
-
-  @media (max-width: 425px) {
-    .row {
-      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Columnas apiladas en móviles */
-    }
-
-    .agregar-btn {
-      font-size: 16px; /* Ajusta el tamaño del texto */
-      padding: 10px 20px; 
-    }
-
-    .modal-content {
-      width: 90%;
-      padding: 15px;
-    }
-
-    .column {
-      min-height: auto; /* Elimina la altura mínima en móviles */
-    }
-
-    input[type="text"],
-    textarea,
-    select,
-    input[type="date"] {
-      font-size: 14px; /* Ajusta el tamaño del texto en d.móviles */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .row {
-        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-        gap: 10px; /* Espacio entre elementos */
-    }
-
-    .modal-content {
-        width: 95%; /* Maximiza el ancho para pantallas pequeñas */
-        padding: 10px; /* Reduce el padding */
-    }
-
-    .column {
-        min-height: auto;
-        width: 100%; /* Asegura que las columnas ocupen todo el ancho disponible */
-        margin-bottom: 10px; /* Espacio entre columnas */
-    }
-
-    input[type="text"],
-    textarea,
-    select,
-    input[type="date"] {
-        font-size: 12px; /* Reduce aún más el tamaño del texto en pantallas más pequeñas */
-    }
-
-    body {
-        overflow-x: hidden; /* Evita el desplazamiento horizontal */
-    }
 }
+
+@media (min-width: 1024px){
+  .row {
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas en pantallas grandes */
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .column-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal en pantallas grandes */
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas en pantallas grandes */
+    gap: 20px;
+    min-width: 100px; /* Asegura que el grid sea lo suficientemente ancho para habilitar el desplazamiento */
+  }
 }

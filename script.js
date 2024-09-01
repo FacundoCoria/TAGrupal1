@@ -116,6 +116,10 @@ function editTask() {
         currentTask.setAttribute('data-priority', document.getElementById('editTaskPriority').value);
         currentTask.setAttribute('data-deadline', document.getElementById('editTaskDueDate').value);
 
+        // Actualizar la fecha en la visualización de la tarea
+        const deadlineElement = currentTask.querySelectorAll('p')[4]; // Asume que es el cuarto párrafo
+        deadlineElement.innerText = 'Fecha límite: ' + document.getElementById('editTaskDueDate').value;
+
         const newStatus = document.getElementById('editTaskStatus').value;
         const newContainer = document.querySelector(`.column[data-status="${newStatus}"] .task-container`);
         newContainer.appendChild(currentTask); // Mueve la tarea si el estado ha cambiado
@@ -127,6 +131,10 @@ function editTask() {
     // Cierra el modal de edición
     closeEditModal();
 }
+
+
+
+
 
 function allowDrop(event) { /*drag and drop*/
     event.preventDefault();
